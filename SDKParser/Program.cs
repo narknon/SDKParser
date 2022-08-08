@@ -125,7 +125,7 @@ foreach (KeyValuePair<int, int> item in dictionary)
 				else if (index == 2) list.Add("\tUPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(AllowPrivateAccess=true))");
 				if (array2[j].Contains(": 1"))
 					list.Add("\t" + array2[j].Replace("char", "uint8").SubstringBefore("//").TrimEnd());
-				else list.Add((index == 2 ? "\t" : string.Empty) + array2[j].Replace("struct ", string.Empty).Replace("32_t", string.Empty).Replace("enum class ", string.Empty).SubstringBefore("//"));
+				else list.Add((index == 2 ? "\t" : string.Empty) + array2[j].Replace("struct ", string.Empty).Replace("_t", string.Empty).Replace("enum class ", string.Empty).SubstringBefore("//"));
 				if (index == 2) list.Add(string.Empty);
 			}
 		}
