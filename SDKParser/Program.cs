@@ -79,7 +79,7 @@ foreach (KeyValuePair<int, int> item in dictionary)
 	list.Add(string.Empty);
 	list.Add("#include \"CoreMinimal.h\"");
 	list.Add(string.Empty);
-	list.Add(isClasses ? "UCLASS(Blueprintable)" : isStruct ? "USTRUCT(BlueprintType)" : "UENUM()");
+	list.Add(isClasses ? "UCLASS(Blueprintable)" : isStruct ? "USTRUCT(BlueprintType)" : "UENUM(BlueprintType)");
 	if (isClasses) // Checks if its class
 	{
 		list.Add(array2[2].Replace("struct", "class").Replace(" : ", " : public ").Replace("{", ""));
@@ -124,8 +124,8 @@ foreach (KeyValuePair<int, int> item in dictionary)
 				}
 				else if (index == 2) list.Add("\tUPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(AllowPrivateAccess=true))");
 				if (array2[j].Contains(": 1"))
-					list.Add("\t" + array2[j].Replace("char", "bool").Replace(" : 1", string.Empty).SubstringBefore("//").TrimEnd());
-				else list.Add((index == 2 ? "\t" : string.Empty) + array2[j].Replace("struct ", string.Empty).Replace("enum class ", string.Empty).SubstringBefore("//"));
+					list.Add("\t" + array2[j].Replace("char", "uint8").SubstringBefore("//").TrimEnd());
+				else list.Add((index == 2 ? "\t" : string.Empty) + array2[j].Replace("struct ", string.Empty).Replace("32_t", string.Empty).Replace("enum class ", string.Empty).SubstringBefore("//"));
 				if (index == 2) list.Add(string.Empty);
 			}
 		}
